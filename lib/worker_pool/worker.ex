@@ -1,18 +1,18 @@
 defmodule WorkerPool.Worker do
   @moduledoc """
-  Documentation for `WorkerPool.Worker`.
+  A worker module for `WorkerPool`.
+
+  You can use it and customize `work`.
   """
 
   @doc """
-  Documentation for `work`
+  Invoked to perform user-defined processing. 
   """
   @callback work(arg :: term) ::
               {:ok, result :: term}
               | {:error, reason :: String.t()}
 
-  @doc """
-  Documentation for `worker`
-  """
+  @doc false
   @spec worker(module, non_neg_integer) ::
           {:ok, any}
           | {:error, any}
@@ -25,9 +25,7 @@ defmodule WorkerPool.Worker do
     end
   end
 
-  @doc """
-  Documentation for `create`
-  """
+  @doc false
   @spec create(module, non_neg_integer) :: pid
   def create(worker_module, wid) do
     spawn(__MODULE__, :worker, [worker_module, wid])
