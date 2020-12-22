@@ -9,7 +9,11 @@ defmodule WorkerPool.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       dialyzer: [plt_add_deps: :transitive],
-      elixirc_paths: elixirc_paths(Mix.env())
+      elixirc_paths: elixirc_paths(Mix.env()),
+      docs: [
+        api_reference: false,
+        main: "WorkerPool"
+      ]
     ]
   end
 
