@@ -21,7 +21,12 @@ defmodule WorkerPool do
   end
 
   @doc """
-  Documentation for `start_link`.
+  Starts a `WorkerPool` process for the given worker module that linked to the current process.
+
+  ## Parameters
+
+  	- `worker_module`: Module of the worker that implements WorkerPool.Worker.
+  	
   """
   @spec start_link(module) :: {:ok, pid}
   def start_link(worker_module) do
