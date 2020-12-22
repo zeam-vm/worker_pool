@@ -1,6 +1,30 @@
 defmodule WorkerPool do
   @moduledoc """
-  Documentation for `WorkerPool`.
+  A pool module for user-defined workers.
+
+  ## Example
+
+  The following module is a sample worker module, which sends `:ok` and a doubled list of each element to the host process after being called.
+
+  ```elixir
+  defmodule SampleWorker do
+  use WorkerPool.Worker
+
+  @impl true
+  def work({pid, list}), do: send(pid, {:ok, Enum.map(list, & &1 * 2)})
+  end
+  ```
+
+  ```elixir
+  WorkerPool.start_link(SampleWorker)
+
+  WorkerPool.get_worker(SampleWorker) |> send({:work, {self(), [1, 2, 3]}})
+  receive do
+  {:ok, result} -> IO.inspect result
+  after 1000 -> IO.puts "Timeout"
+  end
+  ```
+
   """
 
   use GenServer
