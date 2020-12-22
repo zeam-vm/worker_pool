@@ -6,7 +6,12 @@ defmodule WorkerPool do
   use GenServer
 
   @doc """
-  Documentation for `server_name`.
+  Gets the server name of the given worker module.
+
+  ## Parameters
+
+    - worker_module: Module of the worker that implements WorkerPool.Worker.
+
   """
   @spec server_name(module) :: atom
   def server_name(worker_module) do
