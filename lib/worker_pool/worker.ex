@@ -32,5 +32,8 @@ defmodule WorkerPool.Worker do
   end
 
   defmacro __using__(_opts) do
+    quote location: :keep do
+      @behaviour WorkerPool.Worker
+    end
   end
 end
