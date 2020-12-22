@@ -39,9 +39,7 @@ defmodule WorkerPool do
   """
   @spec server_name(module) :: atom
   def server_name(worker_module) do
-    "#{__MODULE__}.#{worker_module}"
-    |> Macro.underscore()
-    |> String.to_atom()
+    :"#{__MODULE__}.#{worker_module}"
   end
 
   @doc """
