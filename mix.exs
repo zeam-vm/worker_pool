@@ -23,7 +23,8 @@ defmodule WorkerPool.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:dialyxir, "~> 0.5.0", only: [:dev], runtime: false}
+      {:dialyxir, "~> 0.5.0", only: [:dev], runtime: false},
+      {:ex_doc, "~> 0.23", only: :dev, runtime: false}
     ]
   end
 
