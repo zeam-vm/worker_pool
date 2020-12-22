@@ -8,10 +8,10 @@ defmodule WorkerPool do
 
   ```elixir
   defmodule SampleWorker do
-  use WorkerPool.Worker
+    use WorkerPool.Worker
 
-  @impl true
-  def work({pid, list}), do: send(pid, {:ok, Enum.map(list, & &1 * 2)})
+    @impl true
+    def work({pid, list}), do: send(pid, {:ok, Enum.map(list, & &1 * 2)})
   end
   ```
 
@@ -20,8 +20,8 @@ defmodule WorkerPool do
 
   WorkerPool.get_worker(SampleWorker) |> send({:work, {self(), [1, 2, 3]}})
   receive do
-  {:ok, result} -> IO.inspect result
-  after 1000 -> IO.puts "Timeout"
+    {:ok, result} -> IO.inspect result
+    after 1000 -> IO.puts "Timeout"
   end
   ```
 
