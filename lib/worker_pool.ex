@@ -10,7 +10,7 @@ defmodule WorkerPool do
 
   ## Parameters
 
-    - worker_module: Module of the worker that implements WorkerPool.Worker.
+    - `worker_module`: Module of the worker that implements WorkerPool.Worker.
 
   """
   @spec server_name(module) :: atom
@@ -26,7 +26,7 @@ defmodule WorkerPool do
   ## Parameters
 
   	- `worker_module`: Module of the worker that implements WorkerPool.Worker.
-  	
+
   """
   @spec start_link(module) :: {:ok, pid}
   def start_link(worker_module) do
@@ -34,7 +34,9 @@ defmodule WorkerPool do
   end
 
   @doc """
-  Documentation for `get_worker`.
+  Gets a worker of the given module.
+
+  The worker has been instantiated and cached before calling `get_worker`.
   """
   @spec get_worker(module) :: pid
   def get_worker(worker_module) do
